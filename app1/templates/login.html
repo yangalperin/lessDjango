@@ -1,0 +1,23 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+
+
+<div class="container">
+    <div style="width:30vw">
+        <form action="/login" method ="POST">
+            {% csrf_token %}
+            
+            <input class="form-control m-2" type="text" placeholder ="name" name ='name'/>
+            <input class="form-control m-2" type="text" placeholder ="password" name = 'password'/>
+            <input class="form-control m-2" type="submit" value ='Enter'/>
+        </form>
+        <div class="d-flex justify-content-center">
+        <a href ="/registration"/>
+        </div>
+        
+
+ 
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Posts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  </head>
+  <body>
+
+    
+     <div class ="d-flex flex wrap">
+    {% for post in posts%}
+    <div class="border border-dark border border-2  w-25 m-2 p-3 rounded">
+        <a style ="text-decoration: none"; href="post/{{post.id}}">
+        <h3 class="fs-1">{{post.title}}</h3>
+        <img style="width: 10vw"; src ="static/images/{{post.image}}" alt=""/>
+        
+        <p style="color: black" class="fs-6">{{post.text}}</p>
+        </a>
+    </div>
+    
+
+    {% endfor%}
+  </div>
+
+  <div class ="d-flex flex wrap">
+    <form action = "newpost" method = "POST" enctype = "multipart/form-data">
+        {% csrf_token %}
+        <input class="btn btn-light ms-3 mt-3 p-1" type ="text" placeholder = "title" name = "title"/>
+        <input class="btn btn-light ms-3 mt-3 p-1"type ="text" placeholder = "post text" name = "text"/>
+        <input class="btn btn-light ms-3 mt-3 p-1"type ="file" name= "file"/>
+        <input class="btn btn-light ms-3 mt-3 p-1"type ="submit" value = "create"/>
+
+
+        
+    </form>
+
+</div>
+<div class="btn-group-vertical">
+  <a class="btn btn-success ms-3 mt-3 p-1" href="/export"> 
+    export 
+  </a> 
+   <a class="btn btn-success ms-3 mt-3 p-1" href= "download">
+    download
+   </a>
+  </div>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html'%} {% load static %} {% block title %}
+<title>post redaction</title>
+{% endblock %} {% block content %}
+<form class="border border-dark border-info w-10 m-2 p-3 rounded" action = "/saveeditpost/{{post.id}}" method = "POST" enctype = "multipart/form-data">
+    {% csrf_token %}
+  <input name ="title" type= "text" class="fs-5" style="color: black" value ="{{post.title}}"/>
+  <img style="width: 10vw" ; src="/static/images/{{post.image}}" alt="" />
+  <input type ="file" name= "file"/>
+  <input name ="text" type= "text" style="color: black" class="fs-6" value ="{{post.text}}"/>
+  <input  type ="submit" value = "Save"/>
+</form>
+
+
+{% endblock %}
